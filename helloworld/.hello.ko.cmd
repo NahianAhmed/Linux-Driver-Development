@@ -1,0 +1,1 @@
+cmd_/home/nahian/Desktop/ldd/helloworld2.0/hello.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/nahian/Desktop/ldd/helloworld2.0/hello.ko /home/nahian/Desktop/ldd/helloworld2.0/hello.o /home/nahian/Desktop/ldd/helloworld2.0/hello.mod.o ;  true
