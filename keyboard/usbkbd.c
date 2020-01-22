@@ -12,7 +12,7 @@
  * Version Information
  */
 #define DRIVER_VERSION ""
-#define DRIVER_AUTHOR "Ayush, Shubham and Divyansh"
+#define DRIVER_AUTHOR "Nahian Ahmed"
 #define DRIVER_DESC "USB HID Boot Protocol keyboard driver"
 #define DRIVER_LICENSE "GPL"
 
@@ -41,6 +41,7 @@ static const unsigned char usb_kbd_keycode[256] = {
 
 
 struct usb_kbd {
+
 	struct input_dev *dev;
 	struct usb_device *usbdev;
 	unsigned char old[8];
