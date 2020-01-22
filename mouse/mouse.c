@@ -46,6 +46,7 @@ struct usb_mouse {
 	signed char *data;
 	dma_addr_t data_dma;
 };
+int count=0,co2=0;
 
 static void usb_mouse_irq(struct urb *urb)
 {
@@ -53,6 +54,7 @@ static void usb_mouse_irq(struct urb *urb)
 	signed char *data = mouse->data;
 	struct input_dev *dev = mouse->dev;
 	int status;
+	 printk(KERN_ALERT "size of data...%ld ..\n",sizeof(data[7])); 
 
 	switch (urb->status) {
 	case 0:			/* success */
@@ -67,15 +69,16 @@ static void usb_mouse_irq(struct urb *urb)
 	}
 
 	
-	input_report_key(dev, BTN_LEFT,   data[0] & 0x01);
-	input_report_key(dev, BTN_RIGHT,  data[0] & 0x02);
-	input_report_key(dev, BTN_MIDDLE, data[0] & 0x04);
+	input_report_key(dev, BTN_LEFT,   data[0] & 0x100);
+	input_report_key(dev, BTN_RIGHT,  data[0] & 0x400);
+	input_report_key(dev, BTN_MIDDLE, data[0] & 0x200);
 	input_report_key(dev, BTN_SIDE,   data[0] & 0x08);
 	input_report_key(dev, BTN_EXTRA,  data[0] & 0x10);
 	input_report_rel(dev, REL_X,     data[1]);
 	input_report_rel(dev, REL_Y,     data[2]);
-	input_report_rel(dev, REL_WHEEL, data[3]);
+	input_report_rel(dev, REL_WHEEL, data[3] & 0x800);
         printk(KERN_ALERT "Relatively moved Nahian :)\n");
+        printk(KERN_ALERT "%d .. data[0] %x data[1] %x data [2] %x data [3] %x\n",count++,data[0],data[1],data[2],data[9]);
 	input_sync(dev);
 resubmit:
 	status = usb_submit_urb (urb, GFP_ATOMIC);
@@ -105,7 +108,8 @@ static void usb_mouse_close(struct input_dev *dev)
 }
 
 static int usb_mouse_probe(struct usb_interface *intf, const struct usb_device_id *id)
-{
+{		
+	printk(KERN_ALERT " in prob... %d\n",co2++);
 	struct usb_device *dev = interface_to_usbdev(intf);
 	struct usb_host_interface *interface;
 	struct usb_endpoint_descriptor *endpoint;
@@ -142,7 +146,7 @@ static int usb_mouse_probe(struct usb_interface *intf, const struct usb_device_i
 	mouse->usbdev = dev;
 	mouse->dev = input_dev;
 
- // manufacturer name
+       // manufacturer name
 	if (dev->manufacturer)
 		strlcpy(mouse->name, dev->manufacturer, sizeof(mouse->name));
 
