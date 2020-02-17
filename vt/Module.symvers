@@ -1,0 +1,4 @@
+0x00000000	unregister_keyboard_notifier	/home/nahian/Desktop/ldd/vt/keyboard	EXPORT_SYMBOL_GPL
+0x00000000	vt_get_leds	/home/nahian/Desktop/ldd/vt/keyboard	EXPORT_SYMBOL_GPL
+0x00000000	kd_mksound	/home/nahian/Desktop/ldd/vt/keyboard	EXPORT_SYMBOL
+0x00000000	register_keyboard_notifier	/home/nahian/Desktop/ldd/vt/keyboard	EXPORT_SYMBOL_GPL

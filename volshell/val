@@ -1,0 +1,18 @@
+#!/bin/bash
+SetPacmdSinkVol()
+{
+    #default index of 0 - can be changed
+    local mySinkIndex=1
+    #if you want to ignore pacmd output
+    local ignoreOutput=true
+    local num=$1
+    local vol=$((num * 655)); 
+    vol=$((num * 36 / 100 + vol));
+    echo -e "\033[0;32mVol - ${num}:${vol}\033[0;m"
+    if $ignoreOutput; then
+        pacmd set-sink-volume $mySinkIndex $vol > /dev/null
+    else
+        pacmd set-sink-volume $mySinkIndex $vol
+    fi
+}
+SetPacmdSinkVol $@

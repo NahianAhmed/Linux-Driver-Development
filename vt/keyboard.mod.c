@@ -11,10 +11,6 @@ MODULE_INFO(name, KBUILD_MODNAME);
 __visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
 	.name = KBUILD_MODNAME,
-	.init = init_module,
-#ifdef CONFIG_MODULE_UNLOAD
-	.exit = cleanup_module,
-#endif
 	.arch = MODULE_ARCH_INIT,
 };
 
@@ -27,6 +23,7 @@ __used
 __attribute__((section(".modinfo"))) =
 "depends=";
 
-MODULE_ALIAS("usb:v*p*d*dc*dsc*dp*ic03isc01ip01in*");
+MODULE_ALIAS("input:b*v*p*e*-e*1,*k*r*a*m*l*s*f*w*");
+MODULE_ALIAS("input:b*v*p*e*-e*12,*k*r*a*m*l*s*f*w*");
 
-MODULE_INFO(srcversion, "69076A003D62CEBC1111AC6");
+MODULE_INFO(srcversion, "F6155A8055E3F69E3234960");
