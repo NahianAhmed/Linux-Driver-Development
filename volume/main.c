@@ -80,7 +80,7 @@ int main(int argc, char** argv)
                     switch(ev.code) {
                         case KEY_M:
                             if (ev.value == 1) {
-                                system("amixer set 'Master' mute");
+                                system("pactl set-sink-volume @DEFAULT_SINK@ +5%");
                             }
                             break;
                         case KEY_DOWN:
