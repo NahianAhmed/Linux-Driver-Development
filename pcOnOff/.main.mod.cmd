@@ -1,0 +1,1 @@
+cmd_/home/nahian/Desktop/Linux-Driver-Development/pcOnOff/main.mod := { echo  /home/nahian/Desktop/Linux-Driver-Development/pcOnOff/main.o; echo; } > /home/nahian/Desktop/Linux-Driver-Development/pcOnOff/main.mod

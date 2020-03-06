@@ -21,6 +21,7 @@ static const char *const evval[3] = {
  * index: The index of the device to open
  *
  * Return: The file descriptor or -1 if failed
+ * 
  */
 int open_device(int index)
 {
@@ -85,7 +86,7 @@ int main(int argc, char** argv)
                             break;
                         case KEY_DOWN:
                             if (ev.value != 0) {
-                                system("pactl set-sink-volume @DEFAULT_SINK@ +5%");
+                                system("pactl set-sink-volume @DEFAULT_SINK@ -5%");
                             }
                             break;
                         case KEY_UP:
